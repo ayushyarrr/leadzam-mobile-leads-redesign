@@ -68,16 +68,39 @@ Before production, I would validate the design with sales users, test on a wider
 
 ## AI Usage Notes
 
-AI tools were used to help scaffold the React and TypeScript prototype and support implementation. I reviewed the generated interface and tested the main search and filtering interactions rather than relying solely on the generated output.
+I used ChatGPT to support the LeadZam product audit, organize findings, and evaluate UX recommendations. I used Bolt to generate and develop the React and TypeScript frontend prototype.
 
-One important implementation decision was to keep the scope focused on mobile lead management instead of generating a complete CRM. The prototype uses mock data, so backend behavior and production integration remain outside the scope of this assessment.
+### AI Suggestions I Changed or Challenged
+
+**1. Mobile leads table — avoid compressing or hiding important information**
+
+**AI suggestion:** One possible approach to a narrow mobile table was to retain the tabular layout by compressing columns and reducing spacing, or to hide secondary columns on smaller screens.
+
+**My decision:** I chose a responsive card-based layout instead. Compressing the table would preserve the horizontal-scrolling problem, while hiding columns could make useful information harder to access. The redesigned cards prioritize lead name, stage, and assignee, making the list easier to scan on mobile.
+
+**2. Add Lead validation — explain requirements before submission**
+
+**AI suggestion:** A conventional form-validation approach could show an error message after a user submits an empty form.
+
+**My decision:** The audit identified that LeadZam already displays a generic error after an empty submission. I recommended communicating the minimum information required before submission, helping users avoid the error in the first place. This remains an audit recommendation rather than an implemented prototype feature.
+
+**3. Audit Log — translate technical events into understandable activity**
+
+**AI suggestion:** A technical activity view could expose internal event names and raw JSON metadata directly to users.
+
+**My decision:** The audit identified this pattern in LeadZam's existing Audit Log. I recommended readable activity descriptions, with raw metadata retained in an expandable technical-details section. This would improve clarity for administrators without removing access to technical information. This recommendation has not been implemented in the prototype.
+
+### Verification
+
+I reviewed the generated frontend and exercised search, stage filtering, combined filtering, and the no-results state in Bolt's preview. Bolt reported successful build and TypeScript checks.
+
+I also kept the audit's priorities provisional where actual user impact, usage frequency, or business rules were unknown. The prototype uses local mock data and has not been validated with real users. Before production, I would conduct usability testing, review relevant product analytics, verify accessibility and responsive behavior, and compare task completion and error rates against the existing experience.
 
 ## Limitations
 
 - Uses local sample data.
 - No live backend or authentication.
 - No production usability study has been conducted.
-- The GitHub copy still requires an independent local build check.
 
 ## Author
 
